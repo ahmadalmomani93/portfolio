@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Ahmad Almomani | Oracle APEX Developer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#070d18;
+    color:white;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
+
+.bg-grid{
+    position:fixed;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:40px 40px;
+    z-index:-3;
+}
+
+.glow{
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    filter:blur(120px);
+    animation:float 10s infinite ease-in-out;
+    z-index:-2;
+}
+
+.glow1{
+    background:rgba(0,140,255,0.20);
+    top:-100px;
+    left:-100px;
+}
+
+.glow2{
+    background:rgba(0,255,200,0.15);
+    bottom:-150px;
+    right:-100px;
+    animation-delay:3s;
+}
+
+.glow3{
+    background:rgba(120,0,255,0.15);
+    top:40%;
+    left:50%;
+    animation-delay:6s;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-40px);}
+    100%{transform:translateY(0px);}
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:40px 20px 100px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero-content{
+    width:100%;
+    animation:fadeUp 1.2s ease;
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    margin-bottom:25px;
+    backdrop-filter:blur(10px);
+    font-size:14px;
+    color:#8fdcff;
+}
+
+h1{
+    font-size:72px;
+    line-height:1.1;
+    margin-bottom:15px;
+    font-weight:700;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#4cc9f0,#00ffcc);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero h2{
+    font-size:26px;
+    color:#9fdcff;
+    margin-bottom:25px;
+    font-weight:500;
+}
+
+.hero p{
+    max-width:760px;
+    line-height:1.9;
+    color:#c7d3e0;
+    font-size:17px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.btn{
+    padding:14px 24px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.35s;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+.btn-primary{
+    background:linear-gradient(90deg,#4cc9f0,#00ffcc);
+    color:#06121f;
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,0.06);
+    color:white;
+    backdrop-filter:blur(10px);
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 35px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    margin-top:80px;
+}
+
+.section-title{
+    font-size:38px;
+    margin-bottom:30px;
+    position:relative;
+}
+
+.section-title::after{
+    content:"";
+    width:80px;
+    height:4px;
+    border-radius:10px;
+    background:linear-gradient(90deg,#4cc9f0,#00ffcc);
+    display:block;
+    margin-top:10px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:28px;
+    padding:30px;
+    backdrop-filter:blur(14px);
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:rgba(76,201,240,0.08);
+    border-radius:50%;
+    top:-80px;
+    right:-80px;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#4cc9f0;
+    box-shadow:0 20px 45px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   GRID
+========================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+/* =========================
+   SKILL TAG
+========================= */
+
+.skill{
+    background:rgba(255,255,255,0.05);
+    padding:18px;
+    border-radius:18px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.06);
+    transition:0.3s;
+    font-weight:500;
+}
+
+.skill:hover{
+    transform:translateY(-6px);
+    border-color:#00ffcc;
+}
+
+/* =========================
+   EXPERIENCE
+========================= */
+
+.job-title{
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.job-company{
+    color:#8fdcff;
+    margin-bottom:18px;
+}
+
+ul{
+    padding-left:20px;
+    line-height:2;
+    color:#c7d3e0;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact p{
+    margin-bottom:15px;
+    color:#d7e3ef;
+    font-size:16px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    margin-top:100px;
+    text-align:center;
+    color:#7d8da1;
+    font-size:14px;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    h1{
+        font-size:48px;
+    }
+
+    .hero h2{
+        font-size:22px;
+    }
+
+    .section-title{
+        font-size:30px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg-grid"></div>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+<div class="glow glow3"></div>
+
+<div class="container">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                Oracle APEX Developer • 6+ Years Experience
+            </div>
+
+            <h1>
+                Ahmad <span class="gradient">Almomani</span>
+            </h1>
+
+            <h2>
+                Oracle APEX Developer | Oracle Database | PL/SQL
+            </h2>
+
+            <p>
+                Oracle APEX Developer with 6+ years of experience in designing, developing, and deploying scalable and secure enterprise web applications using Oracle APEX and Oracle Database.
+                Delivered 30+ enterprise applications across multiple business domains with strong expertise in SQL, PL/SQL, performance tuning, REST APIs, and Oracle Cloud Infrastructure.
+            </p>
+
+            <div class="buttons">
+
+                <a class="btn btn-primary" href="https://lababak.com" target="_blank">
+                    View Lababak
+                </a>
+
+                <a class="btn btn-secondary" href="https://github.com/YOURUSERNAME" target="_blank">
+                    GitHub
+                </a>
+
+                <a class="btn btn-secondary" href="https://linkedin.com/in/YOURPROFILE" target="_blank">
+                    LinkedIn
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SKILLS -->
+
+    <section class="section reveal">
+
+        <h2 class="section-title">
+            Technical Skills
+        </h2>
+
+        <div class="grid">
+
+            <div class="skill">Oracle APEX</div>
+            <div class="skill">Oracle Database</div>
+            <div class="skill">PL/SQL</div>
+            <div class="skill">SQL Optimization</div>
+            <div class="skill">REST APIs</div>
+            <div class="skill">Oracle OCI</div>
+            <div class="skill">Performance Tuning</div>
+            <div class="skill">HTML5 / CSS3</div>
+            <div class="skill">JavaScript / jQuery</div>
+            <div class="skill">Security & Authentication</div>
+            <div class="skill">Interactive Reports</div>
+            <div class="skill">AI Tools & Automation</div>
+
+        </div>
+
+    </section>
+
+    <!-- EXPERIENCE -->
+
+    <section class="section reveal">
+
+        <h2 class="section-title">
+            Experience
+        </h2>
+
+        <div class="card">
+
+            <div class="job-title">
+                Oracle APEX Developer
+            </div>
+
+            <div class="job-company">
+                Jordanian Armed Forces • 2019 - Present
+            </div>
+
+            <ul>
+                <li>Developed and maintained enterprise-level Oracle APEX applications.</li>
+                <li>Delivered 30+ applications across multiple business domains.</li>
+                <li>Designed optimized Oracle databases ensuring security and scalability.</li>
+                <li>Built advanced PL/SQL procedures, packages, functions, and triggers.</li>
+                <li>Integrated REST APIs and external services.</li>
+                <li>Implemented SQL tuning and performance optimization strategies.</li>
+                <li>Worked with Oracle Cloud Infrastructure (OCI).</li>
+                <li>Leveraged AI tools to improve development productivity.</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- PROJECT -->
+
+    <section class="section reveal">
+
+        <h2 class="section-title">
+            Featured Project
+        </h2>
+
+        <div class="card">
+
+            <div class="job-title">
+                Lababak Platform
+            </div>
+
+            <div class="job-company">
+                On-Demand Service Marketplace
+            </div>
+
+            <p style="line-height:2; color:#d2dce7; margin-bottom:25px;">
+                Lababak is a scalable on-demand service marketplace platform developed using Oracle APEX and Oracle Database.
+                The platform enables seamless interaction between customers and service providers through a modern, secure, and responsive experience available on both web and mobile platforms.
+            </p>
+
+            <div class="buttons">
+
+                <a class="btn btn-primary" href="https://lababak.com" target="_blank">
+                    Open Website
+                </a>
+
+                <a class="btn btn-secondary" href="#" target="_blank">
+                    Google Play
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+
+    <section class="section reveal">
+
+        <h2 class="section-title">
+            Achievements
+        </h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>30+</h3>
+                <p>Enterprise Applications</p>
+            </div>
+
+            <div class="card">
+                <h3>6+</h3>
+                <p>Years Experience</p>
+            </div>
+
+            <div class="card">
+                <h3>OCI</h3>
+                <p>Cloud Integration</p>
+            </div>
+
+            <div class="card">
+                <h3>REST API</h3>
+                <p>Integration & Automation</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+
+    <section class="section reveal">
+
+        <h2 class="section-title">
+            Contact
+        </h2>
+
+        <div class="card contact">
+
+            <p>📧 momani9930@gmail.com</p>
+            <p>📱 0772273041</p>
+            <p>🌐 https://lababak.com</p>
+            <p>💻 GitHub: https://github.com/YOURUSERNAME</p>
+            <p>🔗 LinkedIn: https://linkedin.com/in/YOURPROFILE</p>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+        © 2026 Ahmad Almomani • Oracle APEX Developer
+    </div>
+
+</div>
+
+<script>
+
+const reveals = document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll', () => {
+
+    reveals.forEach(section => {
+
+        const windowHeight = window.innerHeight;
+        const revealTop = section.getBoundingClientRect().top;
+
+        if(revealTop < windowHeight - 100){
+            section.classList.add('active');
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
